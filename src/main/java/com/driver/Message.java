@@ -1,5 +1,7 @@
 package com.driver;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 
 public class Message {
@@ -10,10 +12,11 @@ public class Message {
     public Message() {
     }
 
-    public Message(int id, String content, Date timestamp) {
+    public Message(int id, String content) {
         this.id = id;
         this.content = content;
-        this.timestamp = timestamp;
+        LocalDate localDate = LocalDate.now();
+        this.timestamp = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
     }
 
     public int getId() {

@@ -53,9 +53,8 @@ public class WhatsappRepository {
     }
     public int createMessage(String content){
         this.messageId++;
-        LocalDate localDate = LocalDate.now();
-        Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-        Message m = new Message(this.messageId,content,date);
+
+        Message m = new Message(this.messageId,content);
         return this.messageId;
     }
     public int sendMessage(Message message,User sender,Group group) throws Exception {
